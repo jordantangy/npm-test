@@ -32,6 +32,7 @@ jobs:
            oidc-audience: ${{ env.OIDC_AUDIENCE }}
 
        - name: Set CLI Config
+         run: export JFROG_CLI_LOG_LEVEL=DEBUG
          run: jf npm-config --global=true --repo-resolve=$PLATFORM_REPO --repo-deploy=$PLATFORM_REPO
            
        - name: Install Dependencies
