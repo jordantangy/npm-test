@@ -14,9 +14,6 @@ jobs:
       OIDC_AUDIENCE: 'jfrog-github'
       OIDC_PROVIDER: 'jfrog-github'
       PLATFORM_REPO: 'jordanta-npm-local'
-     defaults:
-      run:
-        working-directory: ./package
      steps:
        - name: Checkout
          uses: actions/checkout@v3
@@ -33,7 +30,6 @@ jobs:
            oidc-audience: ${{ env.OIDC_AUDIENCE }}
 
        - name: Set CLI Config
-         export JFROG_CLI_LOG_LEVEL=DEBUG
          run: jf npm-config --global=true --repo-resolve=$PLATFORM_REPO --repo-deploy=$PLATFORM_REPO
            
        - name: Install Dependencies
